@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réceptionner avec succès</title>
+    <style>
+        /* Réinitialisation des marges et des styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Styles généraux */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Styles pour le titre */
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            color: #4b0082;
+            background-color: #e3eafc;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 2em;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styles des boutons */
+        .button {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin: 10px auto;
+            padding: 15px 20px;
+            color: #fff;
+            background-color: #6e8efb;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #4b0082;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animation d'apparition */
+        .button.fadeIn {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cacher les boutons au départ */
+        .hidden {
+            display: none;
+        }
+
+        /* Design responsive pour les petits écrans */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+                padding: 10px;
+            }
+
+            .button {
+                font-size: 1em;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Choisissez le chantier</h1>
+        <button id="startBtn" class="button">Commencer</button>
+        <div id="siteButtons" class="hidden">
+            <a href="https://mouhamek.github.io/devivers/" class="button fadeIn">Projet de construction de siège du conseil économique social et environnemental</a>
+            <a href="chantier2.html" class="button fadeIn">Chantier 2</a>
+            <a href="chantier3.html" class="button fadeIn">Chantier 3</a>
+            <a href="chantier4.html" class="button fadeIn">Chantier 4</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('startBtn').addEventListener('click', function() {
+            const siteButtons = document.getElementById('siteButtons');
+            siteButtons.classList.toggle('hidden');
+            
+            // Ajouter une animation pour chaque bouton
+            if (!siteButtons.classList.contains('hidden')) {
+                const buttons = siteButtons.querySelectorAll('.button');
+                buttons.forEach((button, index) => {
+                    setTimeout(() => {
+                        button.classList.add('fadeIn');
+                    }, index * 100);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
